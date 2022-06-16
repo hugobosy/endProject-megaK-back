@@ -3,6 +3,7 @@ import cors from "cors";
 import "express-async-errors";
 import {handleError} from "./utils/errors";
 import rateLimit from "express-rate-limit";
+import {routesCategory} from "./routes/category/routes.category";
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(rateLimit({
     max: 100, // Limit each IP to 100 request per 'window'
 }))
 
+app.use('/category', routesCategory)
 // app.get('/', async(req,res) => {
 //     throw new Error('Kurwa mac')
 // })
