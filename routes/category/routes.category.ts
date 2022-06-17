@@ -16,8 +16,6 @@ export const routesCategory = Router()
             ...req.body,
             id: uuid(),
         }
-        console.log(data)
         const category = new Category(data);
         category.add()
-
     });
