@@ -1,7 +1,7 @@
 import {AdCategory} from "../../types";
 import {ValidationError} from "../../utils/errors";
 import {pool} from "../../utils/db";
-import {FieldPacket, Query} from "mysql2/promise";
+import {FieldPacket} from "mysql2/promise";
 
 type AdRecordResults = [AdCategory[], FieldPacket[]];
 
@@ -22,14 +22,6 @@ export class Category implements AdCategory {
         this.id = obj.id;
         this.name = obj.name;
         this.image = obj.image;
-    }
-
-    static async getOne(id: string): Promise<AdCategory | null> {
-        const [results] = await pool.execute("SELECT * FROM `category` WHERE id = :id", {
-            id,
-        }) as AdRecordResults;
-
-        return results.length === 0 ? null : new Category(results[0])
     }
 
     async add(): Promise<void> {
