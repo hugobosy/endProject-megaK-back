@@ -1,4 +1,4 @@
-export interface Client {
+export interface ClientType {
     id: string,
     name: string,
     surname: string,
@@ -7,6 +7,6 @@ export interface Client {
     city: string,
     phone: number,
     gender: string,
-    birth: string,
+    birth?: string,
     mail: string,
 }
