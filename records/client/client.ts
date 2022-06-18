@@ -7,15 +7,16 @@ type AdRecordResults = [ClientType[], FieldPacket[]];
 
 export class Client implements ClientType {
     address: string;
-    birth?: string;
+    birth: string;
     city: string;
     code: string;
     gender: string;
     id: string;
-    mail: string;
+    email: string;
     name: string;
     phone: number;
     surname: string;
+    ban: number;
 
     constructor(obj: ClientType) {
         // if (!obj.name || obj.name.length > 36 || obj.name.length < 3) {
@@ -56,7 +57,8 @@ export class Client implements ClientType {
         this.phone = obj.phone;
         this.gender = obj.gender;
         this.birth = obj.birth;
-        this.mail = obj.mail;
+        this.email = obj.email;
+        this.ban = obj.ban;
     }
 
     static async getAll(): Promise<ClientType[] | null> {
