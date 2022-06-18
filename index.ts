@@ -4,6 +4,7 @@ import "express-async-errors";
 import {handleError} from "./utils/errors";
 import rateLimit from "express-rate-limit";
 import {routesCategory} from "./routes/category/routes.category";
+import {routesClient} from "./routes/client/routes.client";
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(rateLimit({
 }))
 
 app.use('/category', routesCategory)
+app.use('/clients', routesClient)
 // app.get('/', async(req,res) => {
 //     throw new Error('Kurwa mac')
 // })
