@@ -13,3 +13,8 @@ export const routesClient = Router()
             id
         })
     })
+
+    .patch('/ban/:id', async (req, res) => {
+        const {id} = req.params;
+        await pool.execute("UPDATE `clients` SET `ban`=1 WHERE `id`=:id", {id})
+    })
