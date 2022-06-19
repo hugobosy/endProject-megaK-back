@@ -3,13 +3,15 @@ import {v4 as uuid} from 'uuid';
 import {Category} from "../../records/category/category";
 import {pool} from "../../utils/db";
 
+const message = {
+    mesage: 'Brak połączenia z bazą danych'
+}
+
 export const routesCategory = Router()
 
     .get('/', async (req, res) => {
-        const data = (
-            await Category.getAll()
-        )
-        res.json(data)
+            const data = await Category.getAll()
+            res.json(data)
     })
     .post('/add', async (req, res) => {
 

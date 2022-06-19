@@ -1,5 +1,6 @@
 import {Router} from "express";
 import {pool} from "../../utils/db";
+import {ValidationError} from "../../utils/errors";
 
 export const routesClient = Router()
     .get('/', async (req, res) => {
@@ -17,4 +18,10 @@ export const routesClient = Router()
     .patch('/ban/:id', async (req, res) => {
         const {id} = req.params;
         await pool.execute("UPDATE `clients` SET `ban`=1 WHERE `id`=:id", {id})
+    })
+
+    .post('/add', async (req, res) => {
+        const data = req.body;
+        console.log(data)
+        await pool.execute("INSERT INTO `clients`(`name`, `surname`, `address`, `code`, `city`, `phone`, `gender`, `birth`, `email`) VALUES(:name, :surname, :address, :code, :city, :phone, :gender, :birth, :email)", data)
     })
