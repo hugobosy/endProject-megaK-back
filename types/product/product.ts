@@ -1,4 +1,5 @@
 export interface Product {
+    firm: string;
     id: string,
     name: string,
     model: string,
