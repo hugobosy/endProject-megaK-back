@@ -7,9 +7,14 @@ export const routesProduct = Router()
         res.json(data[0]);
     })
 
-    .post ('/delete/:id', async(req,res) => {
+    .post('/delete/:id', async (req, res) => {
         const {id} = req.params;
         await pool.execute("DELETE FROM `products` WHERE `id`=:id", {
             id
         })
+    })
+
+    .post('/add', (req, res) => {
+        const data = req.body;
+        console.log(data);
     })
