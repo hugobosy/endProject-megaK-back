@@ -9,7 +9,7 @@ export const routesProduct = Router()
 
     .get('/:id', async (req, res) => {
         const {id} = req.params;
-        const data = await pool.execute("SELECT products.id, products.firm, products.model, products.price, products.description, products.category, products.picture, products.quantity, category.name FROM `products` JOIN `category` ON products.category = category.name WHERE products.id = :id", {id});
+        const data = await pool.execute("SELECT products.id, products.firm, products.model, products.price, products.description, products.category, products.picture, products.quantity, products.color, products.size, category.name FROM `products` JOIN `category` ON products.category = category.name WHERE products.id = :id", {id});
         res.json(data[0])
     })
 
