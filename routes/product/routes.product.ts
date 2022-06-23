@@ -24,3 +24,11 @@ export const routesProduct = Router()
         const data = req.body;
         await pool.execute("INSERT INTO `products`(`firm`, `model`, `size`, `color`, `price`, `quantity`, `description`, `category`, `picture`) VALUES (:firm, :model, :size, :color, :price, :quantity, :description, :category, :picture)", data)
     })
+
+    .post('/edit/:id', async (req, res) => {
+        const {data} = req.body;
+        // const {id} = req.params;
+        console.log(data);
+
+        await pool.execute("UPDATE `products` SET `firm`=:firm, `model`=:model, `category`=:category, `size`=:size, `color`=:color, `price`=:price, `quantity`=:quantity, `description`=:description, `picture`=:picture WHERE `id`=:id", data)
+    })

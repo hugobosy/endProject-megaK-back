@@ -21,6 +21,6 @@ export const routesClient = Router()
     })
 
     .post('/add', async (req, res) => {
-        const data = req.body;
-        await pool.execute("INSERT INTO `clients`(`name`, `surname`, `address`, `code`, `city`, `phone`, `gender`, `birth`, `email`) VALUES(:name, :surname, :address, :code, :city, :phone, :gender, :birth, :email)", data)
+        const {data} = req.body;
+        await pool.execute("INSERT INTO `clients`(`name`, `surname`, `address`, `code`, `city`, `phone`, `gender`, `birth`, `email`) VALUES(:name, :surname, :address, :code, :city, :phone, :gender, :birth, :email)", {data})
     })
