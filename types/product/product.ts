@@ -1,9 +1,8 @@
 export interface Product {
     firm: string;
-    id: string,
-    name: string,
+    id?: string,
     model: string,
-    size: number,
+    size: number | string,
     color: string,
     price: number,
     quantity: number,

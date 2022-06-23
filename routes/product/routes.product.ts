@@ -3,7 +3,7 @@ import {pool} from "../../utils/db";
 
 export const routesProduct = Router()
     .get('/', async (req, res) => {
-        const data = await pool.execute("SELECT products.id, products.firm, products.model, products.price, products.description, products.category, products.picture, products.quantity, category.name FROM `products` JOIN `category` ON products.category = category.id");
+        const data = await pool.execute("SELECT products.id, products.firm, products.model, products.price, products.description, products.category, products.picture, products.quantity, category.name FROM `products` JOIN `category` ON products.category = category.name");
         res.json(data[0]);
     })
 
@@ -14,7 +14,7 @@ export const routesProduct = Router()
         })
     })
 
-    .post('/add', (req, res) => {
+    .post('/add', async(req, res) => {
         const data = req.body;
-        console.log(data);
+        await pool.execute("INSERT INTO `products`(`firm`, `model`, `size`, `color`, `price`, `quantity`, `description`, `category`, `picture`) VALUES (:firm, :model, :size, :color, :price, :quantity, :description, :category, :picture)", data)
     })
