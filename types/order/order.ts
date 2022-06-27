@@ -5,4 +5,5 @@ export interface Order {
     total: number,
     payment: boolean,
     count: number
+    client: string
 }
