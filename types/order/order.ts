@@ -1,7 +1,8 @@
 export interface Order {
     id?: string,
-    date: Date,
-    products: string[],
+    date: string,
+    products: string,
     total: number,
     payment: boolean,
+    count: number
 }

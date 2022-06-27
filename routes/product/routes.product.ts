@@ -9,7 +9,7 @@ export const routesProduct = Router()
 
     .get('/:id', async (req, res) => {
         const {id} = req.params;
-        const data = await pool.execute("SELECT products.id, products.firm, products.model, products.price, products.description, products.category, products.picture, products.quantity, products.color, products.size, category.name FROM `products` JOIN `category` ON products.category = category.name WHERE products.id = :id", {id});
+        const data = await pool.execute("SELECT products.id, products.firm, products.model, products.price, products.description, products.category, products.picture, products.quantity, category.name FROM `products` JOIN `category` ON products.category = category.name WHERE products.id = :id", {id});
         res.json(data[0])
     })
 
@@ -22,10 +22,10 @@ export const routesProduct = Router()
 
     .post('/add', async (req, res) => {
         const data = req.body;
-        await pool.execute("INSERT INTO `products`(`firm`, `model`, `size`, `color`, `price`, `quantity`, `description`, `category`, `picture`) VALUES (:firm, :model, :size, :color, :price, :quantity, :description, :category, :picture)", data)
+        await pool.execute("INSERT INTO `products`(`firm`, `model`, `price`, `quantity`, `description`, `category`, `picture`) VALUES (:firm, :model, :price, :quantity, :description, :category, :picture)", data)
     })
 
     .patch('/edit/:id', async (req, res) => {
         const {data} = req.body;
-        await pool.execute("UPDATE `products` SET `firm`=:firm, `model`=:model, `size`=:size, `color`=:color, `price`=:price, `quantity`=:quantity, `description`=:description, `category`=:category, `picture`=:picture WHERE `id`=:id", data)
+        await pool.execute("UPDATE `products` SET `firm`=:firm, `model`=:model, `price`=:price, `quantity`=:quantity, `description`=:description, `category`=:category, `picture`=:picture WHERE `id`=:id", data)
     })
