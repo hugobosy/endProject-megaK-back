@@ -10,5 +10,8 @@ export const routesOrder = Router()
 
     .post('/simulate', async (req, res) => {
         const data = req.body;
-        await pool.execute("INSERT INTO `orders`(`id`, `date`, `total`, `payment`, `products`, `count`, `client`) VALUES (:id, :date, :total, :payment, :products, :count, :client)", data)
+        const buy = data.buy;
+
+        await pool.execute("INSERT INTO `orders`(`id`, `date`, `total`, `payment`, `products`, `count`, `client`) VALUES (:id, :date, :total, :payment, :products, :count, :client)", data);
+        await buy.forEach((item: any) => pool.execute("INSERT INTO `sells`(`product_id`, `quantity_sells`)  VALUES (:id, :count)", item));
     })

@@ -7,4 +7,5 @@ export interface Product {
     description: string,
     category: string,
     picture: string,
+    quantity_sells?: number,
 }
