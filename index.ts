@@ -7,6 +7,7 @@ import {routesCategory} from "./routes/category/routes.category";
 import {routesClient} from "./routes/client/routes.client";
 import {routesProduct} from "./routes/product/routes.product";
 import {routesOrder} from "./routes/order/routes.order";
+import {routesDashboard} from "./routes/dashboard/routes.dashboard";
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use('/category', routesCategory)
 app.use('/clients', routesClient)
 app.use('/products', routesProduct)
 app.use('/orders', routesOrder)
+app.use('/', routesDashboard)
 // app.get('/', async(req,res) => {
 //     throw new Error('Kurwa mac')
 // })
