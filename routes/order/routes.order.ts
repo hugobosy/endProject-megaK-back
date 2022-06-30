@@ -3,7 +3,7 @@ import {pool} from "../../utils/db";
 
 export const routesOrder = Router()
     .get('/', async (req, res) => {
-        const data = await pool.execute("SELECT * FROM `orders`");
+        const data = await pool.execute("SELECT * FROM `orders` ORDER BY `date` DESC");
 
         res.json(data[0])
     })
