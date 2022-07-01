@@ -31,3 +31,8 @@ export const routesProduct = Router()
         const {data} = req.body;
         await pool.execute("UPDATE `products` SET `firm`=:firm, `model`=:model, `price`=:price, `quantity`=:quantity, `description`=:description, `category`=:category, `picture`=:picture WHERE `id`=:id", data)
     })
+
+    .patch('/order', async(req,res) => {
+        const data = req.body;
+        await pool.execute("UPDATE `products` SET `quantity`=:count WHERE `id`=:id", data)
+    })
