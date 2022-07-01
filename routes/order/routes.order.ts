@@ -3,7 +3,7 @@ import {pool} from "../../utils/db";
 
 export const routesOrder = Router()
     .get('/', async (req, res) => {
-        const data = await pool.execute("SELECT * FROM `orders` ORDER BY `date` DESC");
+        const data = await pool.execute("SELECT * FROM `orders`");
 
         res.json(data[0])
     })
@@ -15,4 +15,5 @@ export const routesOrder = Router()
         await pool.execute("INSERT INTO `orders`(`id`, `date`, `total`, `payment`, `products`, `count`, `client`) VALUES (:id, :date, :total, :payment, :products, :count, :client)", data);
         await buy.forEach((item: any) => pool.execute("UPDATE `sells` SET `quantity_sells` = sells.quantity_sells + :count WHERE `product_id`=:id", item));
         await buy.forEach((item: any) => pool.execute("UPDATE `products` SET `quantity` = products.quantity - :count WHERE `id`=:id", item));
+    //    todo ustawic odpowiedni typ aby nie było any
     })
