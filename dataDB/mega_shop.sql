@@ -79,12 +79,10 @@ CREATE TABLE `clients` (
 INSERT INTO `clients` (`id`, `name`, `surname`, `address`, `code`, `city`, `phone`, `gender`, `birth`, `email`, `orders`, `ban`) VALUES
 ('105c2983-f788-11ec-8142-00d861548425', 'Hugolina', 'Hugo', 'Hugona 25', '59-365', 'Hugon', 789789798, 'Mężczyzna', '29.06.2022, 10:46:42', 'hugon@hugon.pl', NULL, 0),
 ('25698dc0-f620-11ec-996b-00d861548425', 'Jan', 'Janek', 'Ćwiartki 3/4', '59-369', 'Libini', 596859684, 'Mężczyzna', '27.06.2022', 'jan@gmail.com', NULL, 0),
-('658d28c5-f787-11ec-8142-00d861548425', 'Albert', 'Kliszcz', 'Armii Krajowej 6/3', '59-300', 'Lubin', 608172153, 'Mężczyzna', '29.06.2022', 'albert@gmail.com', NULL, 0),
 ('b52b8b9b-f787-11ec-8142-00d861548425', 'Tadek', 'Tadet', 'Tadeusza 25', '59-600', 'Tadka', 456789789, 'Mężczyzna', '29.06.2022', 'tadek@tadek.pl', NULL, 0),
 ('bf7aa25f-f773-11ec-8142-00d861548425', 'Bartosz', 'Bor', 'Złota 38', '57-693', 'Miami', 222444666, 'Mężczyzna', '29.06.2022', 'bartek@gmail.com', NULL, 0),
 ('e1226040-f787-11ec-8142-00d861548425', 'Maciek', 'Zasada', 'Lubinska 15', '59-300', 'Lubin', 456456465, 'Mężczyzna', '29.06.2022', 'maciek@maciek.pl', NULL, 0),
 ('e5db155c-f7ac-11ec-8142-00d861548425', 'Tomasz', 'Tomek', 'Górna 87', '59-340', 'Chobienia', 456456456, 'Mężczyzna', '29.06.2022, 15:10:19', 'tomek@tomek.pl', NULL, 0),
-('e8dfca99-f613-11ec-996b-00d861548425', 'hubert', 'kliszcz', 'Armii Krajowej 6/3', '59-300', 'Lubin', 608172153, 'Mężczyzna', '27.06.2022', 'hkliszcz@gmail.com', NULL, 0),
 ('e936ec68-f773-11ec-8142-00d861548425', 'Jakub', 'Królikowski', 'Informatyczna 69', '57-569', 'Rzym', 586475475, 'Mężczyzna', '29.06.2022', 'jakub@gmail.com', NULL, 0);
 
 -- --------------------------------------------------------
@@ -109,9 +107,6 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `date`, `total`, `payment`, `products`, `count`, `client`) VALUES
 ('15d4b71f-3579-42e9-96e2-5f3061f0e8fc', '1.07.2022, 13:08:30', 7599.00, 0, 'Asus RTX 3080 ROG Strix OC LHR 12GB GDDR6X, ', 1, 'Hugolina Hugo, Hugona 25, 59-365 Hugon'),
-('1d6aa2bb-e320-4a70-b2d4-1bacf6b9d6d8', '1.07.2022, 13:07:30', 479.00, 0, 'Logitech K860 Ergo, ', 1, 'Albert Kliszcz, Armii Krajowej 6/3, 59-300 Lubin'),
-('aa1a869b-a562-43c0-82b4-3840fabd14b6', '1.07.2022, 13:01:46', 7599.00, 0, 'Asus RTX 3080 ROG Strix OC LHR 12GB GDDR6X, ', 1, '');
-
 -- --------------------------------------------------------
 
 --

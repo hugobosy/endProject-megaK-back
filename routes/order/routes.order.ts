@@ -9,11 +9,9 @@ export const routesOrder = Router()
     })
 
     .post('/simulate', async (req, res) => {
-        const data = req.body;
-        const buy = data.buy;
-        console.log(buy)
-        await pool.execute("INSERT INTO `orders`(`id`, `date`, `total`, `payment`, `products`, `count`, `client`) VALUES (:id, :date, :total, :payment, :products, :count, :client)", data);
-        await buy.forEach((item: any) => pool.execute("UPDATE `sells` SET `quantity_sells` = sells.quantity_sells + :count WHERE `product_id`=:id", item));
-        await buy.forEach((item: any) => pool.execute("UPDATE `products` SET `quantity` = products.quantity - :count WHERE `id`=:id", item));
-    //    todo ustawic odpowiedni typ aby nie było any
+        const [data] = req.body;
+        console.log(data)
+        await pool.execute("INSERT INTO `orders`(`id`, `date`, `total`, `payment`, `products`, `count`, `client`) VALUES (:id, :date, :total, :payment, :products, :quantity, :client)", data)
+        await data.productID.forEach((item: any) => pool.execute("UPDATE `sells` SET `quantity_sells` = sells.quantity_sells + :count WHERE `product_id` = :id", item));
+        await data.productID.forEach((item: any) => pool.execute("UPDATE `products` SET `quantity` = products.quantity - :count WHERE `id` = :id", item));
     })
